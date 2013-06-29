@@ -1,0 +1,11 @@
+--- hsqldb/bin/hsqldb.orig	2008-01-03 20:33:19.000000000 +0100
++++ hsqldb/bin/hsqldb	2008-01-03 20:34:07.000000000 +0100
+@@ -467,7 +467,7 @@
+     restart|restartcompacted)
+         STOP_COMMAND=stop
+         [ "$COMMAND" = restartcompacted ] && STOP_COMMAND=stopcompact
+-        "${INVOC_PATH}"hsqldb $STOP_COMMAND || exit $?
++        "${INVOC_PATH}"hsqldb $STOP_COMMAND || :
+         exec "${INVOC_PATH}"/hsqldb start
+     ;;
+     *)
