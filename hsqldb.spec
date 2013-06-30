@@ -18,6 +18,9 @@ Source4:	hsqldb-1.8.0-standard-sqltool.rc
 Patch0:		hsqldb-1.8.0-scripts.patch
 Patch1:		hsqldb-tmp.patch
 Buildarch:	noarch
+# Building hsqldb 1.8.0 with JDK >= 1.6 doesn't work (new abstract
+# functions in base classes), so we force GCJ (JDK 1.5 compatible)
+BuildRequires:	java-1.5.0-gcj-devel
 BuildRequires:	ant
 BuildRequires:	junit
 BuildRequires:	java-rpmbuild >= 0:1.5
@@ -105,6 +108,7 @@ Install it if you wish to use the Hsqldb server.
 EOF
 
 %build
+export JAVA_HOME=/usr/lib/jvm/java-1.5.0-gcj
 export CLASSPATH=$(build-classpath \
 	jsse/jsse \
 	jsse/jnet \
@@ -113,7 +117,7 @@ export CLASSPATH=$(build-classpath \
 	servletapi5 \
 	junit)
 pushd build
-%ant jar javadoc
+ant jar javadoc
 popd
 
 %install
@@ -191,8 +195,6 @@ fi
 %_preun_service %{name}
 
 %files
-%dir %{_docdir}/%{oname}-%{version}
-%doc %{_docdir}/%{oname}-%{version}/hsqldb_lic.txt
 %doc README*.urpmi
 %{_javadir}/*
 
