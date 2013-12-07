@@ -6,7 +6,7 @@
 Summary:	Hsqldb Database Engine
 Name:		hsqldb1.8.0
 Version:	1.8.0.10
-Release:	4
+Release:	5
 Group:		Development/Java
 License:	BSD
 Url:		http://hsqldb.sourceforge.net/
