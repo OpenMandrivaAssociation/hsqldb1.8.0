@@ -112,7 +112,7 @@ export CLASSPATH=$(build-classpath \
 	jsse/jnet \
 	jsse/jcert \
 	jdbc-stdext \
-	servletapi5 \
+	tomcat-servlet-3.0-api \
 	junit)
 pushd build
 ant jar javadoc
@@ -174,7 +174,7 @@ rm -f %{_localstatedir}/lib/%{oname}/lib/hsqldb.jar
 rm -f %{_localstatedir}/lib/%{oname}/lib/servlet.jar
 (cd %{_localstatedir}/lib/%{oname}/lib
     ln -s %{_javadir}/hsqldb.jar hsqldb.jar
-    ln -s %{_javadir}/servletapi5.jar servlet.jar
+    ln -s %{_javadir}/tomcat-servlet-3.0-api.jar servlet.jar
 )
 %_post_service %{name}
 
