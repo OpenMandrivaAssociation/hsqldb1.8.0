@@ -1,12 +1,12 @@
 %define _localstatedir %{_var}
 %define section	devel
-%define cvsver 	1_8_0_10
+%define cvsver 	1_8_1_3
 %define oname 	hsqldb
 
 Summary:	Hsqldb Database Engine
 Name:		hsqldb1.8.0
-Version:	1.8.0.10
-Release:	7
+Version:	1.8.1.3
+Release:	1
 Group:		Development/Java
 License:	BSD
 Url:		http://hsqldb.sourceforge.net/
@@ -17,17 +17,16 @@ Source3:	hsqldb-1.8.0-standard-webserver.properties
 Source4:	hsqldb-1.8.0-standard-sqltool.rc
 Patch0:		hsqldb-1.8.0-scripts.patch
 Patch1:		hsqldb-tmp.patch
+Patch2:		hsqldb-jdbc-4.1.patch
 Buildarch:	noarch
-# Building hsqldb 1.8.0 with JDK >= 1.6 doesn't work (new abstract
-# functions in base classes), so we force GCJ (JDK 1.5 compatible)
-BuildRequires:	java-1.5.0-gcj-devel
+BuildRequires:	java-1.7.0-devel
 BuildRequires:	ant
 BuildRequires:	junit
 BuildRequires:	java-rpmbuild >= 0:1.5
-BuildRequires:	servletapi5
+BuildRequires:	tomcat-servlet-3.0-api
 Requires(pre,post,preun,postun):	rpm-helper
-Requires:	servletapi5
-Requires(post):	servletapi5
+Requires:	tomcat-servlet-3.0-api
+Requires(post):	tomcat-servlet-3.0-api
 Requires(post):	jpackage-utils
 Requires(pre):	shadow-utils
 
@@ -108,7 +107,6 @@ Install it if you wish to use the Hsqldb server.
 EOF
 
 %build
-export JAVA_HOME=/usr/lib/jvm/java-1.5.0-gcj
 export CLASSPATH=$(build-classpath \
 	jsse/jsse \
 	jsse/jnet \
