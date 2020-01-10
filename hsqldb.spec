@@ -98,7 +98,7 @@ chmod -R go=u-w *
 %{_bindir}/find . -type f -name '*.css' -o -name '*.html' -o -name '*.txt' | \
   %{_bindir}/xargs -t perl -pi -e 's/\r$//g'
 
-%apply_patches
+%autopatch -p1
 
 cat > README.%{version}-%{release}.upgrade.urpmi <<EOF
 The server has been removed from the hsqldb package and moved to a
