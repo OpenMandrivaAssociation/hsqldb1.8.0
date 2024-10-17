@@ -9,7 +9,7 @@ Version:	1.8.1.3
 Release:	1
 Group:		Development/Java
 License:	BSD
-Url:		http://hsqldb.sourceforge.net/
+Url:		https://hsqldb.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/hsqldb/hsqldb_%{cvsver}.zip
 Source1:	hsqldb-1.8.0-standard.cfg
 Source2:	hsqldb-1.8.0-standard-server.properties
